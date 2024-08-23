@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit Your Review - ABATE Eye Hospital</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            min-height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            padding: 0 20px;
+        }
+
+        h1 {
+            font-weight: bold;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        form {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        label, textarea, button {
+            display: block;
+            width: 100%;
+            margin: 10px auto;
+        }
+
+        button {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1><b>Submit Your Review</b></h1>
+    <form id="reviewForm" method="POST" action="https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec">
+        <input type="hidden" name="staff_id" id="staffId" value="">
+        <label for="review"><b>Your Review:</b></label>
+        <textarea id="review" name="review" rows="4" cols="50" required></textarea>
+        <button type="submit"><b>Submit</b></button>
+    </form>
+
+    <script>
+        // Get staff_id from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const staffId = urlParams.get('staff_id');
+        if (staffId) {
+            document.getElementById('staffId').value = staffId;
+        }
+    </script>
+</body>
+</html>
